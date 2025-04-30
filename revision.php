@@ -18,8 +18,7 @@ if (isset($_POST['Supprimer'])) {
     }
     
 }
-$stmt = $pdo->prepare("SELECT * FROM  revisions
-                      WHERE utilisateur_id = ? 
+$stmt = $pdo->prepare("SELECT * FROM revisions WHERE utilisateur_id = ? 
                       ORDER BY date DESC");
 $stmt->execute([$_SESSION['mota3alim']['id']]);
 $revisions = $stmt->fetchAll(PDO::FETCH_ASSOC);

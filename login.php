@@ -7,18 +7,18 @@
         $EMAIL = $_POST['EMAIL'];
         $PASSWORD = $_POST['PASSWORD'];
 
-        // Prepare and execute query
+       
         $stmt = $pdo->prepare("SELECT * FROM mota3alim WHERE email = :email");
         $stmt->execute(['email' => $EMAIL]);
         $user = $stmt->fetch();
 
-        // Check if user exists and password matches
+       
         if ($user && $PASSWORD = $user["PASSWORD"]) {
             $message = "✅ Login successful!";
             header('location: ./dashboard.php');
             $_SESSION['mota3alim'] = $user;
 
-            // You can redirect to dashboard or set session here
+
         } else {
             $message = "❌ Invalid email or password!";
             header('location: /login.php');
@@ -28,7 +28,7 @@
 
 ?>
 
-<!-- HTML PART -->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -26,20 +26,16 @@
         $ADDRESS = $_POST['ADDRESS'];
         $PASSWORD = password_hash($_POST['PASSWORD'],PASSWORD_DEFAULT);
 
-        // Hash the password
 
-        // Check if email or phone already exists
         $check = $pdo->prepare("SELECT * FROM mota3alim WHERE EMAIL = ? OR PHONE = ?");
         $check->execute([$EMAIL, $PHONE]);
         if ($check->fetch()) {
             die("❌ Email or phone already exists. Try again.");
         }
 
-        // Insert user
         $stnt = $pdo->prepare("INSERT INTO mota3alim (NAME,EMAIL,AGE,MAJOR,PHONE,ADDRESS,PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stnt->execute([$NAME,$EMAIL,$AGE,$MAJOR,$PHONE,$ADDRESS,$PASSWORD]);
 
-        // Redirect after success
         header("Location: ./login.php");
         exit;
     }

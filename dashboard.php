@@ -1,7 +1,6 @@
 <?php
 require "config.php";
 
-// Redirect if not logged in
 if (!isset($_SESSION['mota3alim'])) {
     header("Location: login.php");
     exit;
@@ -9,12 +8,11 @@ if (!isset($_SESSION['mota3alim'])) {
 
 $id_user = $_SESSION['mota3alim']['id'];
 
-// Get user data from DB
 $stmt = $pdo->prepare("SELECT * FROM mota3alim WHERE id = :id");
 $stmt->execute(['id' => $id_user]);
 $user = $stmt->fetch();
 
-// Check if user is found
+
 if (!$user) {
     echo "User not found.";
     exit;

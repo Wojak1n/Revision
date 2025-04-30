@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $note = intval($_POST['note']);
     $date = $_POST['date'];
 
-    // Vérifications
     if (empty($matiere) || empty($duree) || empty($note) || empty($date)) {
         $erreur = "Tous les champs sont obligatoires";
     } elseif ($note < 0 || $note > 10) {

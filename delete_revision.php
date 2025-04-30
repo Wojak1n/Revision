@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 echo $_SESSION['mota3alim']['id'];
 
 
-    // Vérifier si la révision appartient à l'utilisateur
     $stmt = $pdo->prepare("SELECT * FROM revisions WHERE utilisateur_id = ?");
     $stmt->execute([$_SESSION['mota3alim']['id']]);
     $res=$stmt->fetch(PDO::FETCH_ASSOC);
